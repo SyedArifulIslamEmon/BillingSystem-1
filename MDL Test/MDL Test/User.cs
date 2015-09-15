@@ -30,10 +30,7 @@ namespace MDL_Test
         {
             get
             {
-                if (_userSince > 0)
-                    return _userSince;
-                else
-                    return 0;
+                return _userSince;
             }
         }
 
@@ -66,7 +63,11 @@ namespace MDL_Test
             DateTime now = DateTime.Today;
             int age = now.Year - userCreatedDate.Year;
             if (userCreatedDate > now.AddYears(-age)) age--;
-            return age;
+
+            if (age > 0)
+                return age;
+            else
+                return 0;
         }
     }
 }

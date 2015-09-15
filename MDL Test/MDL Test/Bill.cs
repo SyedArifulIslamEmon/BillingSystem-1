@@ -43,7 +43,8 @@ namespace MDL_Test
         }
         public decimal GetNetPayableAmount()
         {
-            if ((_billUser != null) && (_grossAmount >= _costOfGrocery) && (_grossAmount > 0) && (_costOfGrocery > 0))
+            if ((_billUser != null) && (_grossAmount >= _costOfGrocery) && (_grossAmount > 0) && (_costOfGrocery > 0) 
+                    && _billUser.UserSince > 0)
             {
                 decimal discountAmountFromPer = CalculateDiscountPer(_billUser, _grossAmount - _costOfGrocery);
                 decimal discountAmountFromNonPer = CalculateNonDiscountPer(_grossAmount);

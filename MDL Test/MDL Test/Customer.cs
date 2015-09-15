@@ -7,6 +7,7 @@ namespace MDL_Test
     {
         private decimal _discountPer = 0;
         private int _minCustomerYearsForDiscount = 0;
+        string v = Configuration.MinCustomerYearsForDiscountFromConfig;
         public Customer(DateTime userCreatedDate, UserTypeEnum userCategory)
             : base(userCreatedDate, userCategory)
        { }

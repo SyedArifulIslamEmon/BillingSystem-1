@@ -5,10 +5,8 @@ namespace MDL_Test
 {
    public class Affiliate:User
     {
-       
        private decimal _discountPer = 0;
-
-        public Affiliate(DateTime userCreatedDate, UserTypeEnum userCategory)
+       public Affiliate(DateTime userCreatedDate, UserTypeEnum userCategory)
             : base(userCreatedDate, userCategory)
        { }
         public override decimal DiscountPer
