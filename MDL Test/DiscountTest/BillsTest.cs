@@ -23,7 +23,7 @@ namespace DiscountTest
             decimal actual = billObj.GetNetPayableAmount();
 
             decimal expected = 4460;
-            Assert.AreNotEqual(expected, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         /// <summary>
@@ -131,6 +131,77 @@ namespace DiscountTest
 
             decimal expected = -1;
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GetBillUser_WithInvalidUserType_ShouldPass()
+        {
+            decimal grossAmount = 1900;
+            int userEnum = 5;
+            decimal costOfGrocery = 1000;
+            DateTime userCreatedDate = DateTime.Parse("05/09/2013");
+
+            Bill actual = new Bill(grossAmount, costOfGrocery, userEnum, userCreatedDate);
+            Bill expected = new Bill(grossAmount,costOfGrocery,1,userCreatedDate);
+
+            Assert.AreNotEqual(expected.BillUser, actual.BillUser);
+        }
+
+        [TestMethod]
+        public void GetCostOfGrocery_WithValidUserType_ShouldPass()
+        {
+            decimal grossAmount = 1900;
+            int userEnum = 0;
+            decimal costOfGrocery = 1000;
+            DateTime userCreatedDate = DateTime.Parse("05/09/2013");
+
+            Bill billObj = new Bill(grossAmount, costOfGrocery, userEnum, userCreatedDate);
+
+            decimal actual = billObj.CostOfGrocery;
+            Assert.AreEqual(costOfGrocery, actual);
+        }
+
+        [TestMethod]
+        public void GetGrossAmount_WithValidUserType_ShouldPass()
+        {
+            decimal grossAmount = 1900;
+            int userEnum = 0;
+            decimal costOfGrocery = 1000;
+            DateTime userCreatedDate = DateTime.Parse("05/09/2013");
+
+            Bill billObj = new Bill(grossAmount, costOfGrocery, userEnum, userCreatedDate);
+
+            decimal actual = billObj.GrossAmount;
+            Assert.AreEqual(grossAmount, actual);
+        }
+
+        [TestMethod]
+        public void SetGrossAmount_WithValidUserType_ShouldPass()
+        {
+            decimal grossAmount = 1900;
+            int userEnum = 0;
+            decimal costOfGrocery = 1000;
+            DateTime userCreatedDate = DateTime.Parse("05/09/2013");
+
+            Bill billObj = new Bill(grossAmount, costOfGrocery, userEnum, userCreatedDate);
+
+            decimal actual = billObj.GrossAmount;
+            Assert.AreEqual(grossAmount, actual);
+        }
+
+        [TestMethod]
+        public void GetNetPayableAmountProperty_WithValidUserType_ShouldPass()
+        {
+            decimal grossAmount = 4900;
+            decimal costOfGrocery = 1000;
+            int userEnum = 0;
+            DateTime userCreatedDate = DateTime.Parse("05/09/2013");
+
+            Bill billObj = new Bill(grossAmount, costOfGrocery, userEnum, userCreatedDate);
+            decimal actual = billObj.GetNetPayableAmount();
+
+            decimal expected = 4460;
+            Assert.AreEqual(expected, billObj.NetPayableAmount);
         }
     }
 }

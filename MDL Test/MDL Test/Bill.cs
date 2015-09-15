@@ -11,28 +11,28 @@ namespace MDL_Test
         public User BillUser
         {
             get { return _billUser; }
-            set { _billUser = value; }
+            private set { _billUser = value; }
         }
 
         private decimal _costOfGrocery = 0;
         public decimal CostOfGrocery
         {
             get { return _costOfGrocery; }
-            set { _costOfGrocery = value; }
+            private set { _costOfGrocery = value; }
         }
 
         private decimal _grossAmount = 0;
         public decimal GrossAmount
         {
             get { return _grossAmount; }
-            set { _grossAmount = value; }
+            private set { _grossAmount = value; }
         }
 
         private decimal _netPayableAmount = 0;
         public decimal NetPayableAmount
         {
             get { return _netPayableAmount; }
-            set { _netPayableAmount = value; }
+            private set { _netPayableAmount = value; }
         }
 
         public Bill(decimal grossAmount, decimal costOfGrocery, int userEnum, DateTime userCreatedDate)
