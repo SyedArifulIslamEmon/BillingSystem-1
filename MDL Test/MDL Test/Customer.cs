@@ -5,21 +5,19 @@ namespace MDL_Test
 {
     public class Customer : User
     {
-        private string _employeeDiscountFromConfig = ConfigurationManager.AppSettings["CustomerDiscount"];
-        private string _minCustomerYearsForDiscountFromConfig = ConfigurationManager.AppSettings["MinCustomerYearsForDiscount"];
         private decimal _discountPer = 0;
         private int _minCustomerYearsForDiscount = 0;
-        public Customer(string userName, int userId, DateTime userCreatedDate, UserTypeEnum userCategory)
-            : base(userName, userId, userCreatedDate, userCategory)
+        public Customer(DateTime userCreatedDate, UserTypeEnum userCategory)
+            : base(userCreatedDate, userCategory)
        { }
         public override decimal DiscountPer
         {
             get
             {
-                if (int.TryParse(_minCustomerYearsForDiscountFromConfig, out _minCustomerYearsForDiscount) 
+                if (int.TryParse(Configuration.MinCustomerYearsForDiscountFromConfig, out _minCustomerYearsForDiscount) 
                     && this.UserSince >= _minCustomerYearsForDiscount)
                 {
-                    if (decimal.TryParse(_employeeDiscountFromConfig, out _discountPer)) { }
+                    if (decimal.TryParse(Configuration.CustomerDiscountFromConfig, out _discountPer)) { }
                 }
                 return _discountPer;
             }

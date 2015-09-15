@@ -8,6 +8,7 @@ namespace MDL_Test
         private int _userID;
         private DateTime _userCreatedDate;
         private UserTypeEnum _userCategory;
+        private int _userSince;
 
         public User(string userName, int userID, DateTime userCreatedDate, UserTypeEnum userCategory)
         {
@@ -15,13 +16,24 @@ namespace MDL_Test
             this._userName = userName;
             this._userCreatedDate = userCreatedDate;
             this._userCategory = userCategory;
+            this._userSince = GetUsersAge(_userCreatedDate);
+        }
+
+        public User(DateTime userCreatedDate, UserTypeEnum userCategory)
+        {
+            this._userCreatedDate = userCreatedDate;
+            this._userCategory = userCategory;
+            this._userSince = GetUsersAge(_userCreatedDate);
         }
 
         public int UserSince
         {
             get
             {
-                return GetUsersAge(_userCreatedDate);
+                if (_userSince > 0)
+                    return _userSince;
+                else
+                    return 0;
             }
         }
 

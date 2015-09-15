@@ -35,15 +35,15 @@ namespace MDL_Test
             set { _netPayableAmount = value; }
         }
 
-        public Bill(decimal grossAmount, decimal costOfGrocery, int userId, string userName, int userEnum, DateTime userCreatedDate)
+        public Bill(decimal grossAmount, decimal costOfGrocery, int userEnum, DateTime userCreatedDate)
         {
             this._grossAmount = grossAmount;
             this._costOfGrocery = costOfGrocery;
-            this._billUser = FactoryUser.GetUserObject(userEnum, userCreatedDate, userId, userName);
+            this._billUser = FactoryUser.GetUserObject(userEnum, userCreatedDate);
         }
         public decimal GetNetPayableAmount()
         {
-            if (_billUser != null && _grossAmount >= _costOfGrocery && _grossAmount > 0 && _costOfGrocery > 0)
+            if ((_billUser != null) && (_grossAmount >= _costOfGrocery) && (_grossAmount > 0) && (_costOfGrocery > 0))
             {
                 decimal discountAmountFromPer = CalculateDiscountPer(_billUser, _grossAmount - _costOfGrocery);
                 decimal discountAmountFromNonPer = CalculateNonDiscountPer(_grossAmount);

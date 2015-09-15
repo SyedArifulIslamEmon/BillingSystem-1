@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Affiliate.cs" />
     <Compile Include="Bill.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="FactoryUser.cs" />
     <Compile Include="User.cs" />
